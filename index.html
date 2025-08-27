@@ -1,50 +1,71 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
-	<title>逸見一喜のページ</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>逸見一喜 | Kazuki Hemmi - 研究者プロフィール</title>
+	<meta name="description" content="逸見一喜（Kazuki Hemmi）の研究者プロフィール。Neural Architecture Search、機械学習の研究を行う博士課程学生。">
 	<link rel="stylesheet" type="text/css" href="index.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👨‍💻</text></svg>">
 </head>
 <body>
+	<!-- Language Toggle -->
+	<div class="language-toggle">
+		<button onclick="switchLanguage('ja')" class="lang-btn active" data-lang="ja">日本語</button>
+		<button onclick="switchLanguage('en')" class="lang-btn" data-lang="en">English</button>
+	</div>
+
+	<!-- Theme Toggle -->
+	<button class="theme-toggle" onclick="toggleTheme()" aria-label="テーマ切り替え">
+		<span class="theme-icon">🌙</span>
+	</button>
+
 	<header>
-        <nav>
-            <a href="index_ai.html">自己紹介（AI用）</a> | 
-            <a href="index.html">自己紹介（人間用）</a>
-        </nav>   
-		<h1>自己紹介</h1>
-		<h2>Profile</h2>
-		<img src="Profile.jpg" alt="プロフィール画像">
+		<div class="container">
+			<nav>
+				<a href="index_ai.html" data-ja="自己紹介（AI用）" data-en="Profile (for AI)">自己紹介（AI用）</a>
+				<a href="index.html" data-ja="自己紹介（人間用）" data-en="Profile (for Human)">自己紹介（人間用）</a>
+			</nav>   
+			<h1 data-ja="自己紹介" data-en="Profile">自己紹介</h1>
+			<h2 data-ja="Profile" data-en="Profile">Profile</h2>
+			<img src="Profile.jpg" alt="逸見一喜のプロフィール画像" loading="lazy">
+		</div>
 	</header>
 
 	<main>
+		<div class="container">
 		<section class="section">
-			<h3 class="section-title">所属</h3>
+			<h3 class="section-title" data-ja="所属" data-en="Affiliation">所属</h3>
 			<ul class="section-list">
-				<li>筑波大学大学院 博士後期課程3年</li>
-				<li>産業技術総合研究所 人工知能研究センター 社会知能研究チーム 技術研修員</li>
-				<li><a href="https://www.nefront.com/" target="_blank">株式会社Nefront</a> Co-founder & COO</li>
+				<li data-ja="筑波大学大学院 博士後期課程3年" data-en="PhD Student (3rd year), University of Tsukuba">筑波大学大学院 博士後期課程3年</li>
+				<li data-ja="産業技術総合研究所 人工知能研究センター 社会知能研究チーム 技術研修員" data-en="Technical Trainee, Social Intelligence Research Team, AI Research Center, AIST">産業技術総合研究所 人工知能研究センター 社会知能研究チーム 技術研修員</li>
+				<li><a href="https://www.nefront.com/" target="_blank" data-ja="株式会社Nefront" data-en="Nefront Inc.">株式会社Nefront</a> Co-founder & COO</li>
 			</ul>
 		</section>
 
 		<section class="section">
-			<h3 class="section-title">趣味</h3>
+			<h3 class="section-title" data-ja="趣味" data-en="Interests">趣味</h3>
 			<ul class="section-list">
-				<li>サン・セバスチャンに<del>行きたい</del><ins>行けた</ins></li>
-				<li>サルデーニャに行きたい</li>
-				<li>月一で更新していきます（仮のすがた）</li>
+				<li data-ja="サン・セバスチャンに行きたい→行けた" data-en="Wanted to visit San Sebastián → Visited!">サン・セバスチャンに<del>行きたい</del><ins>行けた</ins></li>
+				<li data-ja="サルデーニャに行きたい" data-en="Want to visit Sardinia">サルデーニャに行きたい</li>
+				<li data-ja="月一で更新していきます（仮のすがた）" data-en="Will update monthly (tentative)">月一で更新していきます（仮のすがた）</li>
 			</ul>
 		</section>
 
 		<section class="section">
-			<h3 class="section-title">プロフィール・リンク</h3>
+			<h3 class="section-title" data-ja="プロフィール・リンク" data-en="Profile Links">プロフィール・リンク</h3>
 			<div class="section-content">
-				<h4>学術プロフィール</h4>
+				<h4 data-ja="学術プロフィール" data-en="Academic Profiles">学術プロフィール</h4>
 				<ul class="section-list">
 					<li><a href="https://scholar.google.co.jp/citations?user=z8p29FQAAAAJ&hl=ja" target="_blank">Google Scholar</a></li>
 					<li><a href="https://researchmap.jp/itigo11111" target="_blank">ResearchMap</a></li>
 					<li><a href="https://www.researchgate.net/profile/Kazuki-Hemmi?ev=hdr_xprf" target="_blank">ResearchGate</a></li>
 					<li><a href="https://dl.acm.org/profile/99661363868" target="_blank">ACM Digital Library</a></li>
 				</ul>
-				<h4>ソーシャルメディア・その他</h4>
+				<h4 data-ja="ソーシャルメディア・その他" data-en="Social Media & Others">ソーシャルメディア・その他</h4>
 				<ul class="section-list">
 					<li><a href="https://www.linkedin.com/in/kazuki-henmi-074295311/?originalSubdomain=jp" target="_blank">LinkedIn</a></li>
 					<li><a href="https://x.com/e9nie" target="_blank">X (Twitter)</a></li>
@@ -54,7 +75,7 @@
 		</section>
 
 		<section class="section">
-			<h3 class="section-title">論文/発表/受賞</h3>
+			<h3 class="section-title" data-ja="論文/発表/受賞" data-en="Publications & Awards">論文/発表/受賞</h3>
 			<ul class="section-list">
 				<li><strong><u>Kazuki Hemmi</u></strong>, Yuki Tanigaki, Kaisei Hara, Masaki Onishi: <a href="https://www.techscience.com/cmc/v84n2/62898/html" target="_blank">Graph-Embedded Neural Architecture Search: A Variational Approach for Optimized Model Design</a>, <em>Computers, Materials & Continua</em>, vol. 84, no. 2, pp. 2245-2271, 2025.</li>
 				<li><strong><u>逸見一喜</u></strong>, 谷垣勇輝, 川上健太, 大西正輝: 効率的なアーキテクチャ埋め込み空間構築のためのNAVIGATORの活用, 人工知能学会全国大会(JSAI), 2025.</li>
@@ -78,6 +99,112 @@
 				<li><strong><u>逸見一喜</u></strong>, 山下晃弘, 北越大輔: 音声対話型イベント予約システムの実現に向けた考察, 生命ソフトウェア・感性工房・而立の会 合同シンポジウム, 2018.</li>
 			</ul>
 		</section>
+		</div>
     </main>
+
+	<script>
+		// Theme Toggle Functionality
+		function toggleTheme() {
+			const body = document.body;
+			const themeIcon = document.querySelector('.theme-icon');
+			const currentTheme = body.getAttribute('data-theme');
+			
+			if (currentTheme === 'dark') {
+				body.setAttribute('data-theme', 'light');
+				themeIcon.textContent = '🌙';
+				localStorage.setItem('theme', 'light');
+			} else {
+				body.setAttribute('data-theme', 'dark');
+				themeIcon.textContent = '☀️';
+				localStorage.setItem('theme', 'dark');
+			}
+		}
+
+		// Language Toggle Functionality
+		function switchLanguage(lang) {
+			const elements = document.querySelectorAll('[data-ja][data-en]');
+			const langButtons = document.querySelectorAll('.lang-btn');
+			
+			// Update button states
+			langButtons.forEach(btn => {
+				btn.classList.remove('active');
+				if (btn.getAttribute('data-lang') === lang) {
+					btn.classList.add('active');
+				}
+			});
+			
+			// Update text content
+			elements.forEach(element => {
+				const text = element.getAttribute('data-' + lang);
+				if (text) {
+					// For links, only update the text content, not the href
+					if (element.tagName === 'A') {
+						element.textContent = text;
+					} else {
+						element.textContent = text;
+					}
+				}
+			});
+			
+			// Update document language
+			document.documentElement.lang = lang;
+			
+			// Save language preference
+			localStorage.setItem('language', lang);
+		}
+
+		// Initialize theme and language on page load
+		document.addEventListener('DOMContentLoaded', function() {
+			// Initialize theme
+			const savedTheme = localStorage.getItem('theme') || 'light';
+			const themeIcon = document.querySelector('.theme-icon');
+			
+			if (savedTheme === 'dark') {
+				document.body.setAttribute('data-theme', 'dark');
+				themeIcon.textContent = '☀️';
+			} else {
+				document.body.setAttribute('data-theme', 'light');
+				themeIcon.textContent = '🌙';
+			}
+			
+			// Initialize language
+			const savedLanguage = localStorage.getItem('language') || 'ja';
+			switchLanguage(savedLanguage);
+			
+			// Add loading animation
+			document.body.classList.add('loading');
+			
+			// Animate list items with stagger
+			const listItems = document.querySelectorAll('.section-list li');
+			listItems.forEach((item, index) => {
+				item.style.setProperty('--i', index + 1);
+			});
+		});
+
+		// Smooth scroll for anchor links
+		document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+			anchor.addEventListener('click', function (e) {
+				e.preventDefault();
+				const target = document.querySelector(this.getAttribute('href'));
+				if (target) {
+					target.scrollIntoView({
+						behavior: 'smooth',
+						block: 'start'
+					});
+				}
+			});
+		});
+
+		// Add hover effect for external links
+		document.querySelectorAll('a[target="_blank"]').forEach(link => {
+			link.addEventListener('mouseenter', function() {
+				this.style.transform = 'translateX(2px)';
+			});
+			
+			link.addEventListener('mouseleave', function() {
+				this.style.transform = 'translateX(0)';
+			});
+		});
+	</script>
 </body>
 </html>
