@@ -29,6 +29,11 @@
     --shadow-hover: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
+/* Smooth theme transition */
+* {
+	transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
 /* Reset and base styles */
 * {
     margin: 0;
@@ -203,24 +208,25 @@ nav a:hover::before {
 
 /* Theme Toggle */
 .theme-toggle {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 1000;
-    background: var(--secondary-color);
-    color: white;
-    border: none;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    cursor: pointer;
-    box-shadow: var(--shadow);
-    transition: var(--transition);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
-    animation: bounceIn 0.8s ease-out 1s both;
+	position: fixed;
+	top: 20px;
+	left: 20px;
+	z-index: 1000;
+	background: var(--secondary-color);
+	color: white;
+	border: none;
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	cursor: pointer;
+	box-shadow: var(--shadow);
+	transition: var(--transition);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.2rem;
+	animation: bounceIn 0.8s ease-out 1s both;
+	overflow: hidden;
 }
 
 @keyframes bounceIn {
@@ -238,8 +244,63 @@ nav a:hover::before {
 }
 
 .theme-toggle:hover {
-    transform: scale(1.1) rotate(15deg);
-    box-shadow: var(--shadow-hover);
+	transform: scale(1.1) rotate(15deg);
+	box-shadow: var(--shadow-hover);
+}
+
+/* Theme transition animation */
+.theme-toggle::before {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 0;
+	height: 0;
+	background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+	border-radius: 50%;
+	transform: translate(-50%, -50%);
+	transition: all 0.6s ease;
+	pointer-events: none;
+}
+
+.theme-toggle.transitioning::before {
+	width: 300vmax;
+	height: 300vmax;
+}
+
+/* Dark mode transition effect */
+body.theme-transitioning {
+	overflow: hidden;
+}
+
+body.theme-transitioning::before {
+	content: '';
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: var(--bg-color);
+	z-index: 9999;
+	opacity: 0;
+	animation: themeTransition 0.6s ease;
+	pointer-events: none;
+}
+
+@keyframes themeTransition {
+	0% { opacity: 0; }
+	50% { opacity: 0.8; }
+	100% { opacity: 0; }
+}
+
+/* Icon rotation animation */
+.theme-toggle .theme-icon {
+	display: inline-block;
+	transition: transform 0.6s ease;
+}
+
+.theme-toggle.transitioning .theme-icon {
+	transform: rotate(360deg) scale(1.2);
 }
 
 /* Main content */
@@ -451,12 +512,12 @@ ins {
         padding: 0.3rem;
     }
     
-    .theme-toggle {
-        bottom: 15px;
-        right: 15px;
-        width: 45px;
-        height: 45px;
-    }
+    	.theme-toggle {
+		top: 15px;
+		left: 15px;
+		width: 45px;
+		height: 45px;
+	}
     
     h1 {
         font-size: 1.8rem;

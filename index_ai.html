@@ -9,7 +9,7 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-	<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+	<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍓</text></svg>">
 </head>
 <body>
 	<!-- Language Toggle -->
@@ -80,8 +80,9 @@
             <h3 class="section-title" data-ja="論文/発表/受賞" data-en="Publications & Awards">論文/発表/受賞</h3>
                 <ul class="section-list">
                     <li><strong><u>Kazuki Hemmi</u></strong>, Yuki Tanigaki, Kaisei Hara, Masaki Onishi: <a href="https://www.techscience.com/cmc/v84n2/62898/html" target="_blank">Graph-Embedded Neural Architecture Search: A Variational Approach for Optimized Model Design</a>, <em>Computers, Materials & Continua</em>, vol. 84, no. 2, pp. 2245-2271, 2025.</li>
-                    <li><strong><u>逸見一喜</u></strong>, 谷垣勇輝, 川上健太, 大西正輝: 効率的なアーキテクチャ埋め込み空間構築のためのNAVIGATORの活用, 人工知能学会全国大会(JSAI), 2025.</li>
-                    <li>渡辺謙，<strong><u>逸見一喜</u></strong>，大西正輝: タスクが違えばモデルも変わる? Neural Architecture Searchの構造探索の影響分析, データ工学と情報マネジメントに関するフォーラム（DEIM）, 2025.</li>
+                    										<li data-ja="逸見一喜, 谷垣勇輝, 大西正輝: 効率的なアーキテクチャ埋め込み空間構築のためのNAVIGATORの活用, 人工知能学会全国大会(JSAI), 2025." data-en="Kazuki Hemmi, Yuki Tanigaki, Masaki Onishi: Efficient utilization of NAVIGATOR for architecture embedding space construction, Japan Society for Artificial Intelligence National Conference (JSAI), 2025. (Japanese)"><strong><u>逸見一喜</u></strong>, 谷垣勇輝, 大西正輝: 効率的なアーキテクチャ埋め込み空間構築のためのNAVIGATORの活用, 人工知能学会全国大会(JSAI), 2025.</li>
+					<li data-ja="森脇篤史, 今村翔太, 逸見一喜: 屋内位置特定技術・AR 技術を活用した施設管理情報の集積及び共有, 第47回 情報シンポ AIJISA 2024." data-en="Atsushi Moriwaki, Shota Imamura, Kazuki Hemmi: Accumulation and sharing of facility management information using indoor positioning technology and AR technology, 47th Information Symposium AIJISA 2024. (Japanese)">森脇篤史, 今村翔太, <strong><u>逸見一喜</u></strong>: 屋内位置特定技術・AR 技術を活用した施設管理情報の集積及び共有, 第47回 情報シンポ AIJISA 2024.</li>
+					<li>渡辺謙，<strong><u>逸見一喜</u></strong>，大西正輝: タスクが違えばモデルも変わる? Neural Architecture Searchの構造探索の影響分析, データ工学と情報マネジメントに関するフォーラム（DEIM）, 2025.</li>
                     <li><strong><u>逸見一喜</u></strong>, 谷垣勇輝, 大西正輝: Neural Architecture Searchにおけるアーキテクチャの特徴量空間の分析と活用, 情報論的学習理論ワークショップ(IBIS), 2024.</li>
                     <li><strong><u>Kazuki Hemmi</u></strong>, Yuki Tanigaki, Masaki Onishi: <a href="https://link.springer.com/chapter/10.1007/978-3-031-72332-2_20" target="_blank">NAVIGATOR-D3: Neural Architecture search using VarIational Graph Auto-encoder Toward Optimal aRchitecture Design for Diverse Datasets</a>, <em>Lecture Notes in Computer Science</em>, vol. 15016, pp. 292-307, International Conference on Artificial Neural Networks (ICANN), 2024.</li>
                     <li><strong><u>逸見一喜</u></strong>: プレゼンテーション賞, データ工学と情報マネジメントに関するフォーラム (DEIM), 2024.</li>
@@ -105,21 +106,77 @@
             </main>
 
 	<script>
-		// Theme Toggle Functionality
+		// Theme Toggle Functionality with Animation
 		function toggleTheme() {
 			const body = document.body;
 			const themeIcon = document.querySelector('.theme-icon');
+			const themeToggle = document.querySelector('.theme-toggle');
 			const currentTheme = body.getAttribute('data-theme');
 			
-			if (currentTheme === 'dark') {
-				body.setAttribute('data-theme', 'light');
-				themeIcon.textContent = '🌙';
-				localStorage.setItem('theme', 'light');
-			} else {
-				body.setAttribute('data-theme', 'dark');
-				themeIcon.textContent = '☀️';
-				localStorage.setItem('theme', 'dark');
+			// Add transition classes
+			body.classList.add('theme-transitioning');
+			themeToggle.classList.add('transitioning');
+			
+			// Create ripple effect
+			createRippleEffect(themeToggle);
+			
+			setTimeout(() => {
+				if (currentTheme === 'dark') {
+					body.setAttribute('data-theme', 'light');
+					themeIcon.textContent = '🌙';
+					localStorage.setItem('theme', 'light');
+				} else {
+					body.setAttribute('data-theme', 'dark');
+					themeIcon.textContent = '☀️';
+					localStorage.setItem('theme', 'dark');
+				}
+			}, 300);
+			
+			// Remove transition classes after animation
+			setTimeout(() => {
+				body.classList.remove('theme-transitioning');
+				themeToggle.classList.remove('transitioning');
+			}, 600);
+		}
+		
+		// Create ripple effect for theme toggle
+		function createRippleEffect(button) {
+			const ripple = document.createElement('div');
+			ripple.className = 'ripple';
+			ripple.style.cssText = `
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				width: 0;
+				height: 0;
+				background: rgba(255, 255, 255, 0.6);
+				border-radius: 50%;
+				transform: translate(-50%, -50%);
+				animation: ripple 0.6s ease-out;
+				pointer-events: none;
+			`;
+			
+			// Add ripple keyframes if not already added
+			if (!document.querySelector('#ripple-keyframes')) {
+				const style = document.createElement('style');
+				style.id = 'ripple-keyframes';
+				style.textContent = `
+					@keyframes ripple {
+						to {
+							width: 100px;
+							height: 100px;
+							opacity: 0;
+						}
+					}
+				`;
+				document.head.appendChild(style);
 			}
+			
+			button.appendChild(ripple);
+			
+			setTimeout(() => {
+				ripple.remove();
+			}, 600);
 		}
 
 		// Language Toggle Functionality
